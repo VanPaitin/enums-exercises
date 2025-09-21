@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class ReduceTest < Minitest::Test
-
   def test_sum_a_list_of_numbers
     numbers = [32, 1, 21, 5, 81, 333]
     result = numbers.reduce(0) do |sum, number|
@@ -17,7 +16,7 @@ class ReduceTest < Minitest::Test
     result = numbers.reduce(0) do |difference, number|
       difference - number
     end
-    assert_equal -170, result
+    assert_equal(-170, result)
   end
 
   def test_multiply_list_of_numbers
@@ -29,7 +28,7 @@ class ReduceTest < Minitest::Test
   end
 
   def test_capitalize_keywords_in_phrase_one_fish_two_fish_red_fish_blue_fish
-    keywords = ["fish", "blue"]
+    keywords = %w[fish blue]
     result = keywords.reduce('one fish two fish red fish blue fish') do |phrase, keyword|
       phrase.gsub(keyword, keyword.upcase)
     end
@@ -53,11 +52,10 @@ class ReduceTest < Minitest::Test
   end
 
   def test_add_all_the_second_values_together
-    elements = [["a", 1], ["b", 9], ["c", 21]]
+    elements = [['a', 1], ['b', 9], ['c', 21]]
     result = elements.reduce(0) do |sum, element|
       sum + element[1]
     end
     assert_equal 31, result
   end
-
 end

@@ -3,37 +3,36 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class FindTest < Minitest::Test
-
   def test_find_first_seven_letter_word
-    words = ["capricious", "berry", "unicorn", "bag", "apple", "festering", "pretzel", "pencil"]
+    words = %w[capricious berry unicorn bag apple festering pretzel pencil]
     found = words.find do |word|
       word.length == 7
     end
-    assert_equal "unicorn", found
+    assert_equal 'unicorn', found
   end
 
   def test_no_waldo
-    words = ["scarf", "sandcastle", "flag", "pretzel", "crow", "key"]
+    words = %w[scarf sandcastle flag pretzel crow key]
     found = words.find do |word|
       word == 'waldo'
     end
-    assert_equal nil, found
+    assert_nil found
   end
 
   def test_find_waldo
-    words = ["noise", "dog", "fair", "house", "waldo", "bucket", "fish"]
+    words = %w[noise dog fair house waldo bucket fish]
     found = words.find do |word|
-      word == "waldo"
+      word == 'waldo'
     end
-    assert_equal "waldo", found
+    assert_equal 'waldo', found
   end
 
   def test_cannot_find_3_letter_words
-    words = ["piglet", "porridge", "bear", "blueberry"]
+    words = %w[piglet porridge bear blueberry]
     found = words.find do |word|
       word.length == 3
     end
-    assert_equal nil, found
+    assert_nil found
   end
 
   def test_find_13
@@ -61,19 +60,19 @@ class FindTest < Minitest::Test
   end
 
   def test_find_first_word_starting_with_q
-    words = ["weirdo", "quill", "fast", "quaint", "quitter", "koala"]
+    words = %w[weirdo quill fast quaint quitter koala]
     found = words.find do |word|
-      word.start_with?("q")
+      word.start_with?('q')
     end
-    assert_equal "quill", found
+    assert_equal 'quill', found
   end
 
   def test_find_first_word_ending_with_er
-    words = ["biggest", "pour", "blight", "finger", "pie", "border"]
+    words = %w[biggest pour blight finger pie border]
     found = words.find do |word|
-      word.end_with?("er")
+      word.end_with?('er')
     end
-    assert_equal "finger", found
+    assert_equal 'finger', found
   end
 
   def test_find_first_number_greater_than_20
@@ -83,5 +82,4 @@ class FindTest < Minitest::Test
     end
     assert_equal 21, found
   end
-
 end

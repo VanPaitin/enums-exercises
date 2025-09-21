@@ -3,14 +3,13 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class MapPatternTest < Minitest::Test
-
   def test_capitalize
-    names = ["alice", "bob", "charlie"]
+    names = %w[alice bob charlie]
     capitalized_names = []
     names.each do |name|
       capitalized_names << name.capitalize
     end
-    assert_equal ["Alice", "Bob", "Charlie"], capitalized_names
+    assert_equal %w[Alice Bob Charlie], capitalized_names
   end
 
   def test_doubles
@@ -32,7 +31,7 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_lengths
-    names = ["alice", "bob", "charlie", "david", "eve"]
+    names = %w[alice bob charlie david eve]
     lengths = []
     names.each do |name|
       lengths << name.length
@@ -41,39 +40,38 @@ class MapPatternTest < Minitest::Test
   end
 
   def test_normalize_zip_codes
-    numbers = [234, 10, 9119, 38881]
+    numbers = [234, 10, 9119, 38_881]
     zip_codes = []
     numbers.each do |number|
       zip_codes << number.to_s.rjust(5, '0')
     end
-    assert_equal ["00234", "00010", "09119", "38881"], zip_codes
+    assert_equal %w[00234 00010 09119 38881], zip_codes
   end
 
   def test_backwards
-    names = ["alice", "bob", "charlie", "david", "eve"]
+    names = %w[alice bob charlie david eve]
     backwards = []
     names.each do |name|
       backwards << name.reverse
     end
-    assert_equal ["ecila", "bob", "eilrahc", "divad", "eve"], backwards
+    assert_equal %w[ecila bob eilrahc divad eve], backwards
   end
 
   def test_words_with_no_vowels
-    words = ["green", "sheep", "travel", "least", "boat"]
+    words = %w[green sheep travel least boat]
     without_vowels = []
     words.each do |word|
       without_vowels << word.delete('aeiou')
     end
-    assert_equal ["grn", "shp", "trvl", "lst", "bt"], without_vowels
+    assert_equal %w[grn shp trvl lst bt], without_vowels
   end
 
   def test_trim_last_letter
-    animals = ["dog", "cat", "mouse", "frog", "platypus"]
+    animals = %w[dog cat mouse frog platypus]
     trimmed = []
     animals.each do |animal|
       trimmed << animal.chop
     end
-    assert_equal ["do", "ca", "mous", "fro", "platypu"], trimmed
+    assert_equal %w[do ca mous fro platypu], trimmed
   end
-
 end
