@@ -1,6 +1,6 @@
 class Problem
   attr_reader :name, :input_variable, :input,
-    :output_variable, :output, :block, :initial_value
+              :output_variable, :output, :block, :initial_value
 
   def initialize(name, input, output, code, options = {})
     @name = name
@@ -45,4 +45,3 @@ class Problem
     ERB.new(File.read(template)).result(binding).gsub(/^\s*$\n/, '').chomp
   end
 end
-

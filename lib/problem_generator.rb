@@ -18,4 +18,3 @@ class ProblemGenerator < SimpleDelegator
     system("cp -r ./lib/templates/method ./lib/templates/#{name}")
   end
 end
-

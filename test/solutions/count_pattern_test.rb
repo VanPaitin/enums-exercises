@@ -3,9 +3,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class CountPatternTest < Minitest::Test
-
   def test_count_count_words_with_e
-    words = ["thing", "phone", "bark", "belt", "shoe", "bath"]
+    words = %w[thing phone bark belt shoe bath]
     tally = 0
     words.each do |word|
       tally += 1 if word.include?('e')
@@ -23,7 +22,7 @@ class CountPatternTest < Minitest::Test
   end
 
   def test_count_words_that_are_uppercase
-    words = ["trousers", "SOCKS", "sweater", "Cap", "SHOE", "TIE"]
+    words = %w[trousers SOCKS sweater Cap SHOE TIE]
     tally = 0
     words.each do |word|
       tally += 1 if word.upcase == word
@@ -32,7 +31,7 @@ class CountPatternTest < Minitest::Test
   end
 
   def test_count_words_ending_in_ing
-    words = ["thought", "brake", "shin", "juice", "trash"]
+    words = %w[thought brake shin juice trash]
     tally = 0
     words.each do |word|
       tally += 1 if word.end_with?('?')
@@ -53,7 +52,7 @@ class CountPatternTest < Minitest::Test
     numbers = [2, 5, 19, 25, 35, 67]
     tally = 0
     numbers.each do |number|
-      tally += 1 if number % 5 == 0
+      tally += 1 if (number % 5).zero?
     end
     assert_equal 3, tally
   end
@@ -62,18 +61,17 @@ class CountPatternTest < Minitest::Test
     prices = [1.0, 3.9, 5.99, 18.5, 20.0]
     tally = 0
     prices.each do |price|
-      tally += 1 if (price - price.floor) == 0
+      tally += 1 if (price - price.floor).zero?
     end
     assert_equal 2, tally
   end
 
   def test_count_four_letter_words
-    words = ["bake", "bark", "corn", "apple", "wart", "bird", "umbrella", "fart"]
+    words = %w[bake bark corn apple wart bird umbrella fart]
     tally = 0
     words.each do |word|
       tally += 1 if word.length == 4
     end
     assert_equal 6, tally
   end
-
 end

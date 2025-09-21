@@ -13,4 +13,3 @@ class EnumerableMethod
     name.split("_").map(&:capitalize).join('')
   end
 end
-

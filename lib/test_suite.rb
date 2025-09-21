@@ -1,5 +1,6 @@
 class TestSuite
   attr_reader :selector, :strategy, :problems, :enum
+
   def initialize(selector, strategy, problems)
     @selector = selector
     @strategy = strategy

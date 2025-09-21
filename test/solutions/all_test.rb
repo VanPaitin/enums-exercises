@@ -3,25 +3,20 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class AllTest < Minitest::Test
-
   def test_all_zeros
     numbers = [0, 0, 0, 0, 0, 0, 0]
-    all_zeros = numbers.all? do |number|
-      number.zero?
-    end
+    all_zeros = numbers.all?(&:zero?)
     assert all_zeros
   end
 
   def test_not_all_zeros
     numbers = [0, 0, 0, 0, 1, 0, 0, 0]
-    all_zeros = numbers.all? do |number|
-      number.zero?
-    end
+    all_zeros = numbers.all?(&:zero?)
     refute all_zeros
   end
 
   def test_all_gone
-    words = ["gone", "gone", "gone", "gone", "gone", "gone", "gone"]
+    words = %w[gone gone gone gone gone gone gone]
     all_gone = words.all? do |word|
       word == 'gone'
     end
@@ -29,7 +24,7 @@ class AllTest < Minitest::Test
   end
 
   def test_not_all_gone
-    words = ["gone", "gone", "gone", "gone", "gone", "there", "gone", "gone"]
+    words = %w[gone gone gone gone gone there gone gone]
     all_gone = words.all? do |word|
       word == 'gone'
     end
@@ -38,22 +33,18 @@ class AllTest < Minitest::Test
 
   def test_all_empty
     strings = ["", "", "", "", "", "", ""]
-    all_empty = strings.all? do |string|
-      string.empty?
-    end
+    all_empty = strings.all?(&:empty?)
     assert all_empty
   end
 
   def test_not_all_empty
     strings = ["", "", "", "full", "", "", ""]
-    all_empty = strings.all? do |string|
-      string.empty?
-    end
+    all_empty = strings.all?(&:empty?)
     refute all_empty
   end
 
   def test_not_all_uppercase
-    words = ["DOUGHNUT", "CASH", "MAIN", "bOWl", "SMACK", "SAND"]
+    words = %w[DOUGHNUT CASH MAIN bOWl SMACK SAND]
     all_caps = words.all? do |word|
       word.upcase != word
     end
@@ -62,16 +53,14 @@ class AllTest < Minitest::Test
 
   def test_all_lies
     lies = [false, false, false, false]
-    all_lies = lies.all? do |lie|
-      !lie
-    end
+    all_lies = lies.all?(&:!)
     assert all_lies
   end
 
   def test_all_multiples_of_7
     numbers = [42, 14, 35, 49, 28, 56, 21, 7]
     all_multiples_of_7 = numbers.all? do |number|
-      number % 7 == 0
+      (number % 7).zero?
     end
     assert all_multiples_of_7
   end
@@ -85,11 +74,10 @@ class AllTest < Minitest::Test
   end
 
   def test_all_4_letter_words
-    words = ["love", "hate", "fire", "bird", "call"]
+    words = %w[love hate fire bird call]
     all_4_letters = words.all? do |word|
       word.length == 4
     end
     assert all_4_letters
   end
-
 end

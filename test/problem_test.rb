@@ -5,11 +5,11 @@ require './lib/problem'
 
 class ExerciseTest < Minitest::Test
   def input
-    {"letters" => %w(a b c)}
+    { "letters" => %w[a b c] }
   end
 
   def output
-    {"capitals" => %w(A B C)}
+    { "capitals" => %w[A B C] }
   end
 
   def exercise
@@ -25,7 +25,7 @@ class ExerciseTest < Minitest::Test
   end
 
   def test_input
-    assert_equal %w(a b c), exercise.input
+    assert_equal %w[a b c], exercise.input
   end
 
   def test_output_variable
@@ -33,7 +33,7 @@ class ExerciseTest < Minitest::Test
   end
 
   def test_output
-    assert_equal %w(A B C), exercise.output
+    assert_equal %w[A B C], exercise.output
   end
 
   def test_block_variable
@@ -41,7 +41,7 @@ class ExerciseTest < Minitest::Test
   end
 
   def test_optional_initial_value
-    exercise = Problem.new("capitalize", input, output, "letter.upcase", {initial_value: 'freddy'})
+    exercise = Problem.new("capitalize", input, output, "letter.upcase", { initial_value: 'freddy' })
     assert_equal 'freddy', exercise.initial_value
   end
 
@@ -73,4 +73,3 @@ class ExerciseTest < Minitest::Test
     assert ex.example?
   end
 end
-

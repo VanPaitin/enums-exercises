@@ -3,9 +3,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class NoneTest < Minitest::Test
-
   def test_none_are_broken
-    things = ["functional", "working", "works", "fixed", "good"]
+    things = %w[functional working works fixed good]
     none_broken = things.none? do |thing|
       thing == "broken"
     end
@@ -14,22 +13,18 @@ class NoneTest < Minitest::Test
 
   def test_double_negative
     numbers = [9, 3, 3, 7, 6, -5, 1]
-    not_none_negative = numbers.none? do |number|
-      number < 0
-    end
+    not_none_negative = numbers.none?(&:negative?)
     refute not_none_negative
   end
 
   def test_none_are_negative
     numbers = [9, 3, 1, 8, 3, 3, 5]
-    none_negative = numbers.none? do |number|
-      number < 0
-    end
+    none_negative = numbers.none?(&:negative?)
     assert none_negative
   end
 
   def test_none_shall_pass
-    critters = ["elf", "hobbit", "dwarf", "wizard", "human"]
+    critters = %w[elf hobbit dwarf wizard human]
     none_shall_pass = critters.none? do |critter|
       critter == "shall pass"
     end
@@ -46,10 +41,7 @@ class NoneTest < Minitest::Test
 
   def test_none_even
     numbers = [3, 9, 15, 21, 19]
-    none_even = numbers.none? do |number|
-      number.even?
-    end
+    none_even = numbers.none?(&:even?)
     assert none_even
   end
-
 end

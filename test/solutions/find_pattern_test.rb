@@ -79,7 +79,7 @@ class FindPatternTest < Minitest::Test
     numbers = [2, 8, 9, 27, 24, 5]
     found = nil
     numbers.each do |number|
-      if number % 3 == 0
+      if (number % 3).zero?
         found = number
         break
       end

@@ -17,4 +17,3 @@ class Exercise
     ]
   end
 end
-

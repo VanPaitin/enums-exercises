@@ -45,16 +45,14 @@ class FindTest < Minitest::Test
 
   def test_find_first_even_number
     numbers = [3, 7, 13, 11, 10, 2, 17]
-    found = numbers.find do |number|
-      number.even?
-    end
+    found = numbers.find(&:even?)
     assert_equal 10, found
   end
 
   def test_find_first_multiple_of_3
     numbers = [2, 8, 9, 27, 24, 5]
     found = numbers.find do |number|
-      number % 3 == 0
+      (number % 3).zero?
     end
     assert_equal 9, found
   end

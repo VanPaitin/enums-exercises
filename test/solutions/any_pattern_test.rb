@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class AnyPatternTest < Minitest::Test
-
   def test_has_at_least_one_zero
     numbers = [2, 0, 9, 3, 0, 1]
     has_zero = false
@@ -23,7 +22,7 @@ class AnyPatternTest < Minitest::Test
   end
 
   def test_has_at_least_one_alice
-    names = ["Bill", "Bob", "Burton", "Alice", "Brandon"]
+    names = %w[Bill Bob Burton Alice Brandon]
     has_alice = false
     names.each do |name|
       has_alice = true if names.include?(name)
@@ -32,7 +31,7 @@ class AnyPatternTest < Minitest::Test
   end
 
   def test_no_alices
-    names = ["Chuck", "Charlene", "Cory", "Chris", "Carl"]
+    names = %w[Chuck Charlene Cory Chris Carl]
     has_alice = false
     names.each do |name|
       has_alice = true if name == "Alice"
@@ -44,13 +43,13 @@ class AnyPatternTest < Minitest::Test
     phrases = ["Sure!", "OK.", "I have no idea.", "Really?Whatever."]
     has_multi_word_phrase = false
     phrases.each do |phrase|
-      has_multi_word_phrase = true if phrase.split(' ').length > 0
+      has_multi_word_phrase = true if phrase.split(' ').length.positive?
     end
     assert has_multi_word_phrase
   end
 
   def test_no_monkeys
-    animals = ["elephant", "hippo", "jaguar", "python"]
+    animals = %w[elephant hippo jaguar python]
     has_monkeys = false
     animals.each do |animal|
       has_monkeys = true if animal == "monkey"
@@ -62,9 +61,8 @@ class AnyPatternTest < Minitest::Test
     numbers = [3, 1, 3, 2, 4, 9, 8]
     multiples_of_5 = false
     numbers.each do |number|
-      multiples_of_5 = true if number % 5 == 0
+      multiples_of_5 = true if (number % 5).zero?
     end
     refute multiples_of_5
   end
-
 end

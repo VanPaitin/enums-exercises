@@ -3,9 +3,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class OnePatternTest < Minitest::Test
-
   def test_one_more
-    words = ["bigger", "better", "more", "improved", "advantageous"]
+    words = %w[bigger better more improved advantageous]
     count = 0
     words.each do |word|
       count += 1 if word == 'more'
@@ -15,7 +14,7 @@ class OnePatternTest < Minitest::Test
   end
 
   def test_not_even_one_ring
-    ornaments = ["bracelet", "anklet", "earring"]
+    ornaments = %w[bracelet anklet earring]
     count = 0
     ornaments.each do |ornament|
       count += 1 if ornament == 'ring'
@@ -25,7 +24,7 @@ class OnePatternTest < Minitest::Test
   end
 
   def test_not_just_one_ring
-    ornaments = ["bracelet", "ring", "ring", "anklet", "earring"]
+    ornaments = %w[bracelet ring ring anklet earring]
     count = 0
     ornaments.each do |ornament|
       count += 1 if ornament == 'ring'
@@ -35,7 +34,7 @@ class OnePatternTest < Minitest::Test
   end
 
   def test_one_time
-    words = ["morning", "time", "evening", "noon", "dusk", "dawn"]
+    words = %w[morning time evening noon dusk dawn]
     count = 0
     words.each do |word|
       count += 1 if word == 'time'
@@ -63,5 +62,4 @@ class OnePatternTest < Minitest::Test
     exactly_one_even_number = count == 1
     refute exactly_one_even_number
   end
-
 end

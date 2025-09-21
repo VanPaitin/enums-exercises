@@ -31,4 +31,3 @@ class ExerciseTest < Minitest::Test
     assert_equal "FindTest", t2.name
   end
 end
-

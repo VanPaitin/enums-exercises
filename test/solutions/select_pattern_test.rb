@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class SelectPatternTest < Minitest::Test
-
   def test_pick_even_numbers
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     evens = []
@@ -23,57 +22,57 @@ class SelectPatternTest < Minitest::Test
   end
 
   def test_pick_words_with_three_letters
-    words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
+    words = %w[pill bad finger cat blue dog table red]
     selected = []
     words.each do |word|
       selected << word if word.length == 3
     end
-    assert_equal ["bad", "cat", "dog", "red"], selected
+    assert_equal %w[bad cat dog red], selected
   end
 
   def test_pick_words_with_more_than_three_letters
-    words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
+    words = %w[pill bad finger cat blue dog table red]
     selected = []
     words.each do |word|
       selected << word if word.length > 3
     end
-    assert_equal ["pill", "finger", "blue", "table"], selected
+    assert_equal %w[pill finger blue table], selected
   end
 
   def test_pick_words_ending_in_e
-    words = ["are", "you", "strike", "thinking", "belt", "piece", "warble", "sing", "pipe"]
+    words = %w[are you strike thinking belt piece warble sing pipe]
     selected = []
     words.each do |word|
       selected << word if word.end_with?('e')
     end
-    assert_equal ["are", "strike", "piece", "warble", "pipe"], selected
+    assert_equal %w[are strike piece warble pipe], selected
   end
 
   def test_pick_words_ending_in_ing
-    words = ["bring", "finger", "drought", "singing", "bingo", "purposeful"]
+    words = %w[bring finger drought singing bingo purposeful]
     selected = []
     words.each do |word|
       selected << word if word.end_with?('ing')
     end
-    assert_equal ["bring", "singing"], selected
+    assert_equal %w[bring singing], selected
   end
 
   def test_pick_words_containing_e
-    words = ["four", "red", "five", "blue", "pizza", "purple"]
+    words = %w[four red five blue pizza purple]
     selected = []
     words.each do |word|
       selected << word if word.include?('e')
     end
-    assert_equal ["red", "five", "blue", "purple"], selected
+    assert_equal %w[red five blue purple], selected
   end
 
   def test_pick_dinosaurs
-    animals = ["tyrannosaurus", "narwhal", "eel", "achillesaurus", "qingxiusaurus"]
+    animals = %w[tyrannosaurus narwhal eel achillesaurus qingxiusaurus]
     dinosaurs = []
     animals.each do |animal|
       dinosaurs << animal if animal.end_with?('saurus')
     end
-    assert_equal ["tyrannosaurus", "achillesaurus", "qingxiusaurus"], dinosaurs
+    assert_equal %w[tyrannosaurus achillesaurus qingxiusaurus], dinosaurs
   end
 
   def test_pick_floats
@@ -95,12 +94,11 @@ class SelectPatternTest < Minitest::Test
   end
 
   def test_pick_hashes
-    elements = ["cat", {:dog=>"fido"}, 23, {:stuff=>"things"}, "aimless", 43]
+    elements = ["cat", { dog: "fido" }, 23, { stuff: "things" }, "aimless", 43]
     hashes = []
     elements.each do |element|
       hashes << element if element.is_a?(Hash)
     end
-    assert_equal [{:dog=>"fido"}, {:stuff=>"things"}], hashes
+    assert_equal [{ dog: "fido" }, { stuff: "things" }], hashes
   end
-
 end

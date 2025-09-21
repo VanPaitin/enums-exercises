@@ -18,7 +18,7 @@ task :meta do
 end
 
 desc "generate a new generator"
-task :new, :name do |t, args|
+task :new, :name do |_t, args|
   require './lib/problem_generator'
   ProblemGenerator.new(EnumerableMethod.new(args[:name].to_sym)).write
   puts "Remember to add :#{args[:name]} to lib/problems.rb"

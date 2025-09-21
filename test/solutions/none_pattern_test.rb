@@ -3,9 +3,8 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class NonePatternTest < Minitest::Test
-
   def test_none_are_broken
-    things = ["functional", "working", "works", "fixed", "good"]
+    things = %w[functional working works fixed good]
     none_broken = true
     things.each do |thing|
       none_broken = false if thing == "broken"
@@ -17,7 +16,7 @@ class NonePatternTest < Minitest::Test
     numbers = [9, 3, 3, 7, 6, -5, 1]
     not_none_negative = true
     numbers.each do |number|
-      not_none_negative = false if number < 0
+      not_none_negative = false if number.negative?
     end
     refute not_none_negative
   end
@@ -26,13 +25,13 @@ class NonePatternTest < Minitest::Test
     numbers = [9, 3, 1, 8, 3, 3, 5]
     none_negative = true
     numbers.each do |number|
-      none_negative = false if number < 0
+      none_negative = false if number.negative?
     end
     assert none_negative
   end
 
   def test_none_shall_pass
-    critters = ["elf", "hobbit", "dwarf", "wizard", "human"]
+    critters = %w[elf hobbit dwarf wizard human]
     none_shall_pass = true
     critters.each do |critter|
       none_shall_pass = false if critter == "shall pass"
@@ -57,5 +56,4 @@ class NonePatternTest < Minitest::Test
     end
     assert none_even
   end
-
 end

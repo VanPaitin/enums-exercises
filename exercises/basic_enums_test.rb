@@ -14,10 +14,7 @@ class BasicEnumsTest < Minitest::Test
   def test_simple_sum
     skip
     sum = 0
-    numbers = [1, 2, 3, 4, 5]
     # write code here
     assert_equal 15, sum
   end
-
 end
-

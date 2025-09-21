@@ -29,4 +29,3 @@ class TestSuiteTest < Minitest::Test
     assert_equal :include?, suite.selector
   end
 end
-

@@ -26,7 +26,7 @@ class BonusQuestionsTest < Minitest::Test
     gnome4 = Gnome.new('evil')
     gnome5 = Gnome.new('roving')
 
-    gnomes = [gnome1, gnome2, gnome3, gnome4, gnome5]
+    [gnome1, gnome2, gnome3, gnome4, gnome5]
 
     # write code here
 
@@ -36,7 +36,6 @@ class BonusQuestionsTest < Minitest::Test
   def test_sum_of_factorials
     skip
     sum_of_factorials = 0
-    numbers = [1, 2, 3, 4, 5]
     # write code here
     assert_equal 153, sum_of_factorials
   end
@@ -49,7 +48,7 @@ class BonusQuestionsTest < Minitest::Test
     squid4 = Squid.new('deep sea')
     squid5 = Squid.new('giant')
 
-    squiddies = [squid1, squid2, squid3, squid4, squid5]
+    [squid1, squid2, squid3, squid4, squid5]
 
     # write code here
 
@@ -59,7 +58,6 @@ class BonusQuestionsTest < Minitest::Test
   def test_max_value
     skip
     max_num = 0
-    numbers = [2, 16, 6, 50, 12]
     # write code here
     assert_equal 50, max_num
   end
@@ -71,7 +69,7 @@ class BonusQuestionsTest < Minitest::Test
     thing4 = Thing.new('fun')
     thing5 = Thing.new('weird')
 
-    things = [thing1, thing2, thing3, thing4, thing5]
+    [thing1, thing2, thing3, thing4, thing5]
 
     # write code here
 
@@ -86,11 +84,10 @@ class BonusQuestionsTest < Minitest::Test
     unicorn4 = Unicorn.new('pink')
     unicorn5 = Unicorn.new('pink')
 
-    unicorns = [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
+    [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
 
     # write code here
 
     assert_equal unicorn4, found
   end
 end
-

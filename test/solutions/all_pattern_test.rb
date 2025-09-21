@@ -3,7 +3,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class AllPatternTest < Minitest::Test
-
   def test_all_zeros
     numbers = [0, 0, 0, 0, 0, 0, 0]
     all_zeros = true
@@ -23,7 +22,7 @@ class AllPatternTest < Minitest::Test
   end
 
   def test_all_gone
-    words = ["gone", "gone", "gone", "gone", "gone", "gone", "gone"]
+    words = %w[gone gone gone gone gone gone gone]
     all_gone = true
     words.each do |word|
       all_gone = false unless word == 'gone'
@@ -32,7 +31,7 @@ class AllPatternTest < Minitest::Test
   end
 
   def test_not_all_gone
-    words = ["gone", "gone", "gone", "gone", "gone", "there", "gone", "gone"]
+    words = %w[gone gone gone gone gone there gone gone]
     all_gone = true
     words.each do |word|
       all_gone = false unless word == 'gone'
@@ -59,7 +58,7 @@ class AllPatternTest < Minitest::Test
   end
 
   def test_not_all_uppercase
-    words = ["DOUGHNUT", "CASH", "MAIN", "bOWl", "SMACK", "SAND"]
+    words = %w[DOUGHNUT CASH MAIN bOWl SMACK SAND]
     all_caps = true
     words.each do |word|
       all_caps = false unless word.upcase != word
@@ -71,7 +70,7 @@ class AllPatternTest < Minitest::Test
     lies = [false, false, false, false]
     all_lies = true
     lies.each do |lie|
-      all_lies = false unless !lie
+      all_lies = false if lie
     end
     assert all_lies
   end
@@ -80,7 +79,7 @@ class AllPatternTest < Minitest::Test
     numbers = [42, 14, 35, 49, 28, 56, 21, 7]
     all_multiples_of_7 = true
     numbers.each do |number|
-      all_multiples_of_7 = false unless number % 7 == 0
+      all_multiples_of_7 = false unless (number % 7).zero?
     end
     assert all_multiples_of_7
   end
@@ -95,12 +94,11 @@ class AllPatternTest < Minitest::Test
   end
 
   def test_all_4_letter_words
-    words = ["love", "hate", "fire", "bird", "call"]
+    words = %w[love hate fire bird call]
     all_4_letters = true
     words.each do |word|
       all_4_letters = false unless word.length == 4
     end
     assert all_4_letters
   end
-
 end

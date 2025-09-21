@@ -3,15 +3,14 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 class ZipPatternTest < Minitest::Test
-
   def test_speed_interview_pairs
-    list1 = ["Alice", "Bob", "Charlie"]
-    list2 = ["Xenia", "Yves", "Zach"]
+    list1 = %w[Alice Bob Charlie]
+    list2 = %w[Xenia Yves Zach]
     pairs = []
     list1.length.times do |i|
       pairs << [list1[i], list2[i]]
     end
-    assert_equal [["Alice", "Xenia"], ["Bob", "Yves"], ["Charlie", "Zach"]], pairs
+    assert_equal [%w[Alice Xenia], %w[Bob Yves], %w[Charlie Zach]], pairs
   end
 
   def test_menu
@@ -25,7 +24,7 @@ class ZipPatternTest < Minitest::Test
   end
 
   def test_lottery_tickets
-    list1 = ["Alice", "Bob", "Charlie"]
+    list1 = %w[Alice Bob Charlie]
     list2 = [298, 166, 237]
     tickets = []
     list1.length.times do |i|
@@ -35,18 +34,18 @@ class ZipPatternTest < Minitest::Test
   end
 
   def test_equivalent_dna_sequences
-    strand1 = ["G", "A", "T", "T", "A", "C", "A"]
-    strand2 = ["G", "A", "T", "G", "A", "C", "A"]
+    strand1 = %w[G A T T A C A]
+    strand2 = %w[G A T G A C A]
     pairs = []
     strand1.length.times do |i|
       pairs << [strand1[i], strand2[i]]
     end
-    assert_equal [["G", "G"], ["A", "A"], ["T", "T"], ["T", "G"], ["A", "A"], ["C", "C"], ["A", "A"]], pairs
+    assert_equal [%w[G G], %w[A A], %w[T T], %w[T G], %w[A A], %w[C C], %w[A A]], pairs
   end
 
   def test_solitaire
-    list1 = ["Ace", "6", "10", "Queen"]
-    list2 = [:clubs, :diamonds, :hearts, :spades]
+    list1 = %w[Ace 6 10 Queen]
+    list2 = %i[clubs diamonds hearts spades]
     cards = []
     list1.length.times do |i|
       cards << [list1[i], list2[i]]
@@ -55,13 +54,12 @@ class ZipPatternTest < Minitest::Test
   end
 
   def test_colors
-    list1 = ["shoes", "tie", "umbrella"]
-    list2 = ["red", "pink", "black"]
+    list1 = %w[shoes tie umbrella]
+    list2 = %w[red pink black]
     fashion = []
     list1.length.times do |i|
       fashion << [list1[i], list2[i]]
     end
-    assert_equal [["shoes", "red"], ["tie", "pink"], ["umbrella", "black"]], fashion
+    assert_equal [%w[shoes red], %w[tie pink], %w[umbrella black]], fashion
   end
-
 end

@@ -42,7 +42,7 @@ class Generator
   def self.generate_solutions
     problems.each do |problem|
       problem.test_suites.each do |suite|
-        suite.problems.each {|p| p.example!}
+        suite.problems.each(&:example!)
         File.open("./test/solutions/#{suite.filename}", 'wb') do |file|
           file.write suite.render('./lib/templates/suite.erb')
         end

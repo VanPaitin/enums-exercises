@@ -1,31 +1,30 @@
 require 'erb'
 
 class Problems
-
   def self.generate
     new.generate
   end
 
   def selectors
-    [
-      :map,
-      :select,
-      :reject,
-      :any?,
-      :all?,
-      :none?,
-      :one?,
-      :group_by,
-      :find,
-      :count,
-      :sort_by,
-      :reduce,
-      :zip
+    %i[
+      map
+      select
+      reject
+      any?
+      all?
+      none?
+      one?
+      group_by
+      find
+      count
+      sort_by
+      reduce
+      zip
     ]
   end
 
   def enums
-    selectors.map {|selector| EnumerableMethod.new(selector)}
+    selectors.map { |selector| EnumerableMethod.new(selector) }
   end
 
   def generate
@@ -41,5 +40,4 @@ class Problems
   def template
     "./lib/templates/generator.erb"
   end
-
 end
