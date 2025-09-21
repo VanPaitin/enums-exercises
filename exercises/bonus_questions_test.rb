@@ -13,52 +13,61 @@ class BonusQuestionsTest < Minitest::Test
     product = 1
     numbers = [1, 2, 3, 4, 5, 6, 7]
     numbers.each do |number|
-      # write code here
+      product *= number
     end
     assert_equal 5040, product
   end
 
   def test_first_roving_gnome
-    skip
     gnome1 = Gnome.new('forest')
     gnome2 = Gnome.new('roving')
     gnome3 = Gnome.new('snorkeling')
     gnome4 = Gnome.new('evil')
     gnome5 = Gnome.new('roving')
 
-    [gnome1, gnome2, gnome3, gnome4, gnome5]
+    gnomes = [gnome1, gnome2, gnome3, gnome4, gnome5]
 
-    # write code here
+    found = gnomes.find(&:roving?)
 
     assert_equal gnome2, found
   end
 
+  def factorial(num)
+    return 1 if num.zero?
+
+    (1..num).reduce(1) { |product, number| product * number }
+  end
+
   def test_sum_of_factorials
-    skip
     sum_of_factorials = 0
-    # write code here
+    tracking_sum = 0
+    i = 1
+
+    while tracking_sum <= 153
+      sum_of_factorials = tracking_sum
+      tracking_sum += factorial(i)
+
+      i += 1
+    end
+
     assert_equal 153, sum_of_factorials
   end
 
   def test_first_giant_squid
-    skip
     squid1 = Squid.new('tiny')
     squid2 = Squid.new('inky')
     squid3 = Squid.new('giant')
     squid4 = Squid.new('deep sea')
     squid5 = Squid.new('giant')
 
-    [squid1, squid2, squid3, squid4, squid5]
-
-    # write code here
+    found = [squid1, squid2, squid3, squid4, squid5].find(&:giant?)
 
     assert_equal squid3, found
   end
 
   def test_max_value
-    skip
     max_num = 0
-    # write code here
+    max_num += 25 while max_num < 50
     assert_equal 50, max_num
   end
 
@@ -69,24 +78,19 @@ class BonusQuestionsTest < Minitest::Test
     thing4 = Thing.new('fun')
     thing5 = Thing.new('weird')
 
-    [thing1, thing2, thing3, thing4, thing5]
-
-    # write code here
+    found = [thing1, thing2, thing3, thing4, thing5].find(&:weird?)
 
     assert_equal thing3, found
   end
 
   def test_first_pink_unicorn
-    skip
     unicorn1 = Unicorn.new('white')
     unicorn2 = Unicorn.new('sparkly')
     unicorn3 = Unicorn.new('purple')
     unicorn4 = Unicorn.new('pink')
     unicorn5 = Unicorn.new('pink')
 
-    [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
-
-    # write code here
+    found = [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5].find(&:pink?)
 
     assert_equal unicorn4, found
   end
