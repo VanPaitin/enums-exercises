@@ -40,14 +40,10 @@ class BonusQuestionsTest < Minitest::Test
 
   def test_sum_of_factorials
     sum_of_factorials = 0
-    tracking_sum = 0
-    i = 1
+    numbers = [1, 2, 3, 4, 5]
 
-    while tracking_sum <= 153
-      sum_of_factorials = tracking_sum
-      tracking_sum += factorial(i)
-
-      i += 1
+    numbers.each do |i|
+      sum_of_factorials += factorial(i)
     end
 
     assert_equal 153, sum_of_factorials

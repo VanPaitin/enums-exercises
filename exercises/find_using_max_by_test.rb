@@ -7,18 +7,19 @@ class FindUsingMaxByTest < Minitest::Test
   def test_longest_word
     words = %w[apple banana cherry date eggplant]
 
-    found_word = words.max_by(&:length)
+    found_word = words.max_by do |word|
+      word.length
+    end
 
     assert_equal "eggplant", found_word
   end
 
   # This one is missing the block inside the loop.
   def test_shortest_word
-    skip
     words = %w[apple banana cherry date eggplant]
 
     found_word = words.max_by do |word|
-      # write code here
+      -word.length
     end
 
     assert_equal "date", found_word
@@ -26,50 +27,60 @@ class FindUsingMaxByTest < Minitest::Test
 
   # This one is missing the entire loop
   def test_array_with_the_most_items
-    skip
+    arrays = [%i[a b c], [1, 2, 3, 4, 5], ["zoo", :things, :stuff]]
 
-    # write code here
+    biggest_array = arrays.max_by do |array|
+      array.length
+    end
 
     assert_equal [1, 2, 3, 4, 5], biggest_array
   end
 
   # You're on your own on this one.
   def test_array_with_the_fewest_items
-    skip
+    arrays = [%i[a b c], [1, 2, 3, 4, 5], ["zoo", :things, :stuff]]
 
-    # write code here
+    smallest_array = arrays.max_by do |array|
+      -array.length
+    end
 
     assert_equal %i[a b c], smallest_array
   end
 
   def test_biggest_number
-    skip
+    numbers = [1, 10, 100, 1000, 10_000, 1_000_000]
 
-    # write code here
+    found = numbers.max_by do |number|
+      number
+    end
 
     assert_equal 1_000_000, found
   end
 
   def test_smallest_number
-    skip
+    numbers = [1, 10, 100, 1000, 10_000, 1_000_000]
 
-    # write code here
+    found = numbers.max_by(&:-@)
 
     assert_equal 1, found
   end
 
   def test_most_programmers
-    skip
+    programmers = { ruby: %w[katrina sandi jim aaron desi], java: %w[abby jon susan] }
 
-    # write code here
+    most_programmers = programmers.max_by do |_, names|
+      names.length
+    end
 
     assert_equal :ruby, most_programmers.first
   end
 
   def test_fewest_programmers
-    skip
+    programmers = { ruby: %w[katrina sandi jim aaron desi], java: %w[abby jon susan] }
 
-    # write code here
+    fewest_programmers = programmers.max_by do |_, names|
+      -names.length
+    end
 
     assert_equal :java, fewest_programmers.first
   end
