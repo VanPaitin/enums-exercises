@@ -6,3 +6,5 @@ Style/StringLiterals:
   Enabled: false
 Naming/VariableNumber:
   Enabled: false
+Metrics/MethodLength:
+  Enabled: false
